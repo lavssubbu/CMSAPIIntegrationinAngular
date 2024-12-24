@@ -1,0 +1,26 @@
+
+<div>
+    <button class="btn btn-info" (click)="AddBook()">Create</button>
+</div>
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>BookId</th>
+            <th>BookName</th>
+            <th>AuthorName</th>
+            <th>Price</th>
+            <th>PublishedYear</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.bookId}}</td>
+            <td>{{book.bookName}}</td>
+            <td>{{book.authName}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.publishedYear}}</td>
+            <td><button class="btn btn-info" (click)="BookDetails(book.bookId!)">Details</button></td>
+            <td><button class="btn btn-secondary" (click)="updateBook(book.bookId!)">Update</button></td>
+        </tr>
+    </tbody>
+</table>

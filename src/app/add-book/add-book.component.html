@@ -1,0 +1,13 @@
+<p>add-book works!</p>
+
+<form (ngSubmit)="onAdd()">
+    <label for="bookName">BookName</label>
+    <input id="bookName" [(ngModel)]="book.bookName" name="bookName"/>
+    <label for="authName">AuthorName</label>
+    <input id="authName" [(ngModel)]="book.authName" name="authName"/>
+    <label for="price">Price</label>
+    <input id="price" [(ngModel)]="book.price" name="price"/>
+    <label for="pubYear">PublishedYear</label>
+    <input id="pubYear" [(ngModel)]="book.publishedYear" name="publishedYear" type="datetime-local"/>
+    <button type="submit">Create</button>
+</form>

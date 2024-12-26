@@ -1,0 +1,14 @@
+<p>cart works!</p>
+<h2>Your Cart</h2>
+<div *ngIf="cart.length > 0">
+  <ul>
+    <li *ngFor="let book of cart">
+      {{ book.bookName }} - ₹{{ book.price }}
+    </li>
+  </ul>
+  <p><strong>Total Price:</strong> ₹{{ totalPrice }}</p>
+</div>
+<div *ngIf="cart.length === 0">
+  <p>Your cart is empty.</p>
+</div>
+<a routerLink="/books">Go to Book List</a>

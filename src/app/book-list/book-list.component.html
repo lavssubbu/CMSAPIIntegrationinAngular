@@ -1,7 +1,14 @@
 
 <div>
-    <button class="btn btn-info" (click)="AddBook()">Create</button>
+    <button class="btn btn-info" *ngIf="isAdmin"  (click)="AddBook()">Create</button>
 </div>
+<div class="filters">
+    <label for="price">Max Price:</label>
+    <input id="price" type="number" [(ngModel)]="filterPrice" (input)="applyFilters()">
+  
+    <label for="authorName">Author Name:</label>
+    <input id="authorName" type="text" [(ngModel)]="filterAuthorName" (input)="applyFilters()">
+  </div>
 <table class="table table-hover">
     <thead class="table-dark">
         <tr>
@@ -13,14 +20,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let book of books">
+        <tr *ngFor="let book of filteredBooks">
             <td>{{book.bookId}}</td>
             <td>{{book.bookName}}</td>
             <td>{{book.authName}}</td>
             <td>{{book.price}}</td>
             <td>{{book.publishedYear}}</td>
-            <td><button class="btn btn-info" (click)="BookDetails(book.bookId!)">Details</button></td>
-            <td><button class="btn btn-secondary" (click)="updateBook(book.bookId!)">Update</button></td>
+            <td><button class="btn btn-info" *ngIf="isAdmin || isUser"  (click)="BookDetails(book.bookId!)">Details</button></td>
+            <td><button class="btn btn-info" *ngIf="isUser"  (click)="addToCart(book)">AddtoCart</button></td>
+            <td><button class="btn btn-secondary" *ngIf="isAdmin"  (click)="updateBook(book.bookId!)">Update</button></td>
+            <button class="btn btn-danger" *ngIf="isAdmin"  (click)="deletebok(book.bookId!)">Delete</button>
         </tr>
+        <a routerLink="/cart" routerLinkActive="active">Go to Cart</a>
     </tbody>
 </table>
